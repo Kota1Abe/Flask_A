@@ -1,5 +1,6 @@
-<!doctype html>
-<title>Flask Blog</title>
+<!DOCTYPE html>
+
+<title>calc</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -22,9 +23,6 @@
                     <a class="nav-link" href="{{ url_for('login') }}">ログイン</a>
                 </li>
                 {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('new_entry')}}">新規登録</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('logout') }}">ログアウト</a>
                 </li>
