@@ -3,4 +3,4 @@ from salaly import app
 
 @app.route("/")
 def show_entries():
-    return "hoge"
+    return render_template("input.html")
