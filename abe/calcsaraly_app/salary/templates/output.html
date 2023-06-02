@@ -1,4 +1,3 @@
-
 <!doctype html > 
 <title>給与計算アプリ </title > 
 <link rel ="stylesheet" href =" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
@@ -11,14 +10,14 @@
         <a class ="navbar-brand" href ="{{url_for('show_entries')}}">給与計算アプリ</a>
     </nav>
 
-    
-<form action ="/login" method = post>
+    <p></p>
+
+
+<form action ="/output" method = post>
     <div class ="form-group">
-        <label for ="InputTitle">給与 </label> 
-        <input type =" number" class ="form-control" id =" InputTitle" name = salary> 
+        <label for ="InputTitle">給与：{{salary}}の場合、支給額：{{pay_amount}}、税額{{tax}}です </label> 
     </div >
             
-    <button type ="submit" class ="btn btn-primary"> 計算する </button > 
+    <button type ="submit" class ="btn btn-primary"> 戻る </button > 
 </form >
             
-
