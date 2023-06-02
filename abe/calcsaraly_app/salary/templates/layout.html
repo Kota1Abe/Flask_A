@@ -9,27 +9,20 @@
     <nav class =" navbar navbar-expand-lg navbar-light bg-light"> 
         <a class ="navbar-brand" href ="{{url_for('show_entries')}}">給与計算アプリ</a>
     </nav>
-    
-<form action ="/login" method = post>
-    <div class ="form-group">
-        <label for ="InputTitle">給与 </label> 
-        <input type =" number" class ="form-control" id =" InputTitle" name = salary> 
-    </div >
-            
-    <button type ="submit" class ="btn btn-primary"> 計算する </button > 
-</form >
-            
 
-
-<!-->
-{% for message in get_flashed_messages() %}
-<div class="alert alert-info" role="alert">
-    {{message}}
-</div>
-{% endfor %}
-
-    <div class ="blog-body"> 
-        {% block body %}{% endblock %}
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-info" role="alert">
+        {{message}}
     </div>
+    {% endfor %}
+
+
+    {% block body%}{% endblock %}
 </div>
--->
+
+
+
+
+
+
+

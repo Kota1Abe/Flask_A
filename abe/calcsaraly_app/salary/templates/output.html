@@ -1,14 +1,6 @@
-<!doctype html > 
-<title>給与計算アプリ </title > 
-<link rel ="stylesheet" href =" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
-<script src ="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> 
-<script src ="https://dnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> 
-<script src =" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+{% extends "layout.html" %}
 
-<div class ="container"> 
-    <nav class =" navbar navbar-expand-lg navbar-light bg-light"> 
-        <a class ="navbar-brand" href ="{{url_for('show_entries')}}">給与計算アプリ</a>
-    </nav>
+{% block body %}
 
 <form action ="/output" method = post>
     <div class ="form-group">
@@ -18,3 +10,4 @@
     <button type ="submit" class ="btn btn-primary"> 戻る </button > 
 </form >
             
+{% endblock %}
