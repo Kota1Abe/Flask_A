@@ -1,0 +1,13 @@
+{% extends "layout.html" %} {% block body %}
+<form action="/output" method=post>
+<div class="form-group">
+    <label for="InputTitle">給与計算</label>
+    <input type="number" class="form-control" id="InputTitle" name="salary">
+    # type는 salary의 타입을 결정 , submit, text 등 여러가지가 있음. 
+    </div>
+
+   
+
+    <button type="submit" class="btn btn-primary">計算する</button>
+    </form>
+    {% endblock %}
