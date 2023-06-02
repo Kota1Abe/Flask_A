@@ -6,7 +6,7 @@ class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), unique=True)
     text = db.Column(db.Text)
-    coreated_at = db.Column(db.DateTime)
+    created_at = db.Column(db.DateTime)
 
     def __init__(self, title=None, text=None):
         self.title = title
