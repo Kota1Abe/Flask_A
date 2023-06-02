@@ -12,6 +12,12 @@
         <a href="/" class="navbar-brand">給与計算</a>
     </nav>
 
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+
     <div class="blog-body">
         {% block body %}{% endblock %}
     </div>
