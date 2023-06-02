@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
 
-hoge
+<form action="{{url_for('output')}}" method="post">
+    <div class="form-group">
+        <label for="InputSalaly">給与</label>
+        <input type="text" class="form-control" id="InputSalaly" name="salaly">
+    </div>
+    <button type="submit" class="btn btn-primary">ログイン</button>
+</form>
 
 {% endblock %}
