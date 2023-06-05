@@ -4,7 +4,7 @@ from flask_blog import app
 from flask_blog import db
 from flask_blog.models.entries import Entry
 
-from flask_blog.views.views import login_required
+from flask_blog.views.views import login_required #, user_permission_check
 
 @app.route("/")
 @login_required

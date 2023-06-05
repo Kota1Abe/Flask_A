@@ -29,3 +29,12 @@ def login_required(view):
             return redirect(url_for("login"))
         return view(*args, **kwargs)
     return inner
+
+"""
+def user_permission_check(view, id):
+    @wraps(view)
+    def inner():
+        print(id)
+        return view()
+    return inner
+"""
