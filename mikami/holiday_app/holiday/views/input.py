@@ -5,4 +5,4 @@ from holiday import db
 
 @app.route("/")
 def show_input():
-    return "input"
+    return render_template("input.html")
