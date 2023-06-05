@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<table class="table">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">祝日</th>
+        <th scope="col">テキスト</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2001-03-23</td>
+        <td>みかみの誕生日</td>
+      </tr>
+      <tr>
+        <td>2001-03-23</td>
+        <td>みかみの誕生日</td>
+      </tr>
+    </tbody>
+  </table>
+
+<br>
+
+<a href="{{url_for('show_input')}}" class="btn btn-primary">戻る</a>
+
+{% endblock %}
