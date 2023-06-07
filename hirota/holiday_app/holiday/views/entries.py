@@ -19,11 +19,18 @@ def merge_entry():
             holi_date=request.form['holi_date'],
             holi_text=request.form['holi_text']
             )
-    db.session.merge(entry)
-    db.session.commit()
-    flash('記事が更新されました')
-    return render_template('/result.html', text2=text)
-    # return redirect(url_for('result_entry', text=text))
+    try:
+        db.session.add(entry)
+        db.session.commit()
+        flash('記事が更新されました')
+        text = f"{holi_date}({holi_text})に更新されました"
+        return render_template('/result.html', text2=text)
+    except:
+        db.session.merge(entry)
+        db.session.commit()
+        flash('記事が追加されました')
+        text = f"{holi_date}({holi_text})が新しく追加されました"
+        return render_template('/result.html', text2=text)
 
 
 
@@ -42,14 +49,9 @@ def delete_entry():
         text = f'{holi_date}({holi_text})は、削除されました'
         flash(f'{holi_date}({holi_text})は、削除されました')
         return render_template('/result.html', text2=text)
-        # return redirect(url_for('result_entry', text=text))
+        
     except:
         holi_date = request.form["holi_date"]
         text = f'{holi_date}は、祝日マスタに登録されていません。'
         flash(text)
         return render_template('/input.html')
-
-# @app.route('/result', methods=['GET'], )
-# def result_entry(text2):
-#     text2 = text2
-#     return render_template('/result.html', text2=text2)
