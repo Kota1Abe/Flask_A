@@ -14,26 +14,23 @@ def show_entries():
 def merge_entry():
     holi_date=request.form['holi_date']
     holi_text=request.form['holi_text']
-    text = f"{holi_date}({holi_text})が登録されました"
+    if holi_text =="":
+        holi_text = " "
+    entry2 = Entry.query.get(holi_date)
+    try:
+        if len(entry2.holi_text) > 0:
+            text = f"{holi_date}({holi_text})が更新されました"
+    except:
+        text = f"{holi_date}({holi_text})が登録されました"
     entry = Entry(
             holi_date=request.form['holi_date'],
             holi_text=request.form['holi_text']
             )
-    try:
-        db.session.add(entry)
-        db.session.commit()
-        flash('記事が更新されました')
-        text = f"{holi_date}({holi_text})に更新されました"
-        return render_template('/result.html', text2=text)
-    except:
-        db.session.merge(entry)
-        db.session.commit()
-        flash('記事が追加されました')
-        text = f"{holi_date}({holi_text})が新しく追加されました"
-        return render_template('/result.html', text2=text)
-
-
-
+    db.session.merge(entry)
+    db.session.commit()
+    flash('記事が更新されました')
+    return render_template('/result.html', text2=text)
+    
 @app.route('/input', methods=['GET'])
 def input_entry():
     return render_template('/input.html')

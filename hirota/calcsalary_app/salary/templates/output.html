@@ -1,14 +1,12 @@
-
 {% extends "layout.html" %}
 {% block body %}
-<form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+<form action="{{ url_for('show_result') }}" class=add-entry>
     <div class="form-group">
         <label for="InputTitle">給与</label>
         <p>
-            あなたの給料は{}, 支給額は{}, 税金は{}です。
+            あなたの給料は{{sla[0]}}, 支給額は{{sla[1]}}, 税金は{{sla[2]}}です。
         </p>
-        <input type="text" class="form-control" id="InputTitle" name=salary>
     </div>
-    <button type="submit" class="btn btn-primary">計算する</button>
+    <button type="submit" class="btn btn-primary">戻る</button>
 </form>
 {% endblock %}
