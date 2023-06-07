@@ -11,19 +11,21 @@ import re
 
 @app.route("/maintenance_date/delete", methods=["POST"])
 def delete_date():
-        holiday = request.form["holiday"]
-        holiday_text = request.form["holiday_text"]
+    holiday = request.form["holiday"]
+    holiday_text = request.form["holiday_text"]
 
-        deleteHoliday = Holiday.query.filter(Holiday.holi_date == holiday, Holiday.holi_text == holiday_text).first()
-        
-        if not deleteHoliday == None:
-            db.session.delete(deleteHoliday)
-            db.session.commit()
-            message = "{0}({1})は削除されました".format(holiday, holiday_text)
-            return render_template("result.html", message=message)
-        
-        flash("{0}({1})は祝日マスタに登録されていません".format(holiday, holiday_text), "danger")
-        return redirect(url_for("show_input"))
+    # 削除したい値を検索する
+    deleteHoliday = Holiday.query.filter(Holiday.holi_date == holiday, Holiday.holi_text == holiday_text).first()
+    
+    # あれば削除
+    if not deleteHoliday == None:
+        db.session.delete(deleteHoliday)
+        db.session.commit()
+        message = "{0}({1})は削除されました".format(holiday, holiday_text)
+        return render_template("result.html", message=message)
+    
+    flash("{0}({1})は祝日マスタに登録されていません".format(holiday, holiday_text), "danger")
+    return redirect(url_for("show_input"))
 
 
 @app.route("/maintenance_date/add", methods=["POST"])
@@ -56,12 +58,16 @@ def add_date():
     
     editHoliday = Holiday.query.get(tdate)
 
+    # 更新処理
     if not editHoliday == None:
         editHoliday.holi_text = holiday_text
         db.session.merge(editHoliday)
         db.session.commit()
-        flash("新しく追加しました", "info")
-        return render_template("result.html")
+        message = "{0}は「{1}」に更新されました".format(holiday, holiday_text)
+        return render_template("result.html", message=message)
+        #flash("新しく追加しました", "info")
+        #return render_template("result.html")
+    # 登録処理
     else: 
         addHoliday = Holiday(
             holi_date = tdate,
@@ -69,9 +75,7 @@ def add_date():
         )
         db.session.add(addHoliday)
         db.session.commit()
-        flash("新しく追加しました", "info")
-        return render_template("result.html")
-        
-    #finally:
-    #    flash("日付が不正な値です。フォーマット例通りに入力してください(例：2000-01-01)", "danger")
-    #    return redirect(url_for("show_input"))
+        message = "{0}({1})が登録されました".format(holiday, holiday_text)
+        return render_template("result.html", message=message)
+        #flash("新しく追加しました", "info")
+        #return render_template("result.html")
