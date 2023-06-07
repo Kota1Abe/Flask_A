@@ -10,7 +10,7 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "/home/matcha-23training/Flask_A/mikami/calcsalary_app/server.py",
+                "FLASK_APP": "/home/matcha-23training/Flask_A/mikami/holiday_app/server.py",
                 "FLASK_DEBUG": "1"
             },
             "args": [
