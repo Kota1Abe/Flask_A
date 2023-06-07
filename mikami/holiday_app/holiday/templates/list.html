@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<br>
+
+<table class="table">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">祝日</th>
+        <th scope="col">テキスト</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for holiday in holiday_list %}
+      <tr>
+        <td>{{holiday.holi_date}}</td>
+        <td>{{holiday.holi_text}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+<br>
+
+<a href="{{url_for('show_input')}}" class="btn btn-primary">戻る</a>
+
+{% endblock %}

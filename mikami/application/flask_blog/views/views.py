@@ -1,11 +1,7 @@
 from flask import request, redirect, url_for, render_template, flash, session
 from flask_blog import app
 
-@app.route("/")
-def show_entries():
-    if not session.get("logged_in"):
-        return redirect(url_for("login"))
-    return render_template("entries/index.html")
+from functools import wraps
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -25,3 +21,20 @@ def logout():
     session.pop("logged_in", None)
     flash("ログアウトしました", "info")
     return redirect(url_for("show_entries"))
+
+def login_required(view):
+    @wraps(view)
+    def inner(*args, **kwargs):
+        if not session.get("logged_in"):
+            return redirect(url_for("login"))
+        return view(*args, **kwargs)
+    return inner
+
+"""
+def user_permission_check(view, id):
+    @wraps(view)
+    def inner():
+        print(id)
+        return view()
+    return inner
+"""
