@@ -11,7 +11,7 @@
         <input type="text" name="holiday_text" id="InputText" class="form-control">
     </div>
     <button type="submit" name="_method" value="post" formaction="{{url_for('add_date')}}" class="btn btn-primary">新規登録・更新</button>
-    <button type="submit" name="_method" value="post" class="btn btn-danger">削除</button>
+    <button type="submit" name="_method" value="post" formaction="{{url_for('delete_date')}}" class="btn btn-danger">削除</button>
 </form>
 
 <br>

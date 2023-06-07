@@ -9,6 +9,23 @@ import datetime
 
 import re
 
+@app.route("/maintenance_date/delete", methods=["POST"])
+def delete_date():
+        holiday = request.form["holiday"]
+        holiday_text = request.form["holiday_text"]
+
+        deleteHoliday = Holiday.query.filter(Holiday.holi_date == holiday, Holiday.holi_text == holiday_text).first()
+        
+        if not deleteHoliday == None:
+            db.session.delete(deleteHoliday)
+            db.session.commit()
+            message = "{0}({1})は削除されました".format(holiday, holiday_text)
+            return render_template("result.html", message=message)
+        
+        flash("{0}({1})は祝日マスタに登録されていません".format(holiday, holiday_text), "danger")
+        return redirect(url_for("show_input"))
+
+
 @app.route("/maintenance_date/add", methods=["POST"])
 def add_date():
     holiday = request.form["holiday"]
