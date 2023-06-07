@@ -7,10 +7,6 @@ from myapp.models.user import User
 from myapp.models.career import Career
 from myapp.models.product import Product
 
-@app.route("/")
-def index():
-    return render_template("index.html")
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -54,3 +50,15 @@ def login_required(view):
             return redirect(url_for("login"))
         return view(*args, **kwargs)
     return inner
+
+@app.route("/")
+@login_required
+def index():
+    user_list = User.query.order_by(User.id.desc()).all()
+    return render_template("index.html", user_list = user_list)
+
+@app.route("/user/<int:id>")
+@login_required
+def show_user(id):
+    user = User.query.filter(User.id == id).first()
+    return render_template("career/career.html", user=user)

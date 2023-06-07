@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 {% block body %}
 
-index
+<br>
+<ul class="lisk-group lisk-group-flush">
+    {% for user in user_list %}
+    <li class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{user.name}}</h5>
+            <a href="{{url_for('show_user', id=user.id)}}" class="card-link">続きを読む</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
