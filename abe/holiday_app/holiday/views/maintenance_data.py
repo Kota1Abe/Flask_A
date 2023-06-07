@@ -5,12 +5,6 @@ from holiday.models.mst_holiday import Entry
 from holiday import db
 #from flask_blog.views.views import login_required
 
-@app.route('/')
-def show_entries():
-    #entries=Entry.query.order_by(Entry.id.desc()).all()
-    return render_template("input.html") #,entries=entries
-
-"""
 @app.route("/maintenance_date",methods=["GET","POST"])
 def maintenance():
     if request.method=="POST":
@@ -20,24 +14,25 @@ def maintenance():
                 flash("日付が未入力です。入力してください")
                 return redirect("/")
         
+            #elif request.form["button"]=="delete":
+
             else:
                 Date=request.form["holiday"]  
                 Text=request.form["holiday_text"]
-                return render_template("result.html",Date=Date,Text=Text)
-            
-        #elif request.form["button"]=="delete":
-"""
 
-"""
-@app.route("/list",methods=["GET","POST"])
-def list():
-    if request.method=="POST":
-        entries=Entry.query.order_by(Entry.holi_date.desc().all())
-        return render_template("list.html",entries=entries)
-"""
+                holiday=Entry(holi_date=Date,holi_text=Text)
+                db.session.merge(holiday)
+                db.session.commit()
 
+                return render_template("result.html",Date=Date,Text="("+Text+")"+"が登録されました")
+        
+        elif request.form["button"]=="delete":
+            entry=Entry.query.get(request.form["holiday"])
+            db.session.delete(entry)
+            db.session.commit()
+            return redirect(url_for("show_entries"))
+        
 
-"""
 @app.route("/result",methods=["GET","POST"])
 def result():
-"""
+    return redirect(url_for("show_entries"))

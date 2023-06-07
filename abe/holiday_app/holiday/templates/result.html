@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<form action ="/result" method = post>
+    <div class ="form-group">
+        <h4 style="margin-top: 30px;">処理結果</h4>
+        <label for ="InputDate">{{Date}}{{Text}} </label> 
+    </div >
+            
+
+    <button type ="submit" class ="btn btn-primary"> 戻る </button > 
+</form >
+            
+{% endblock %}
