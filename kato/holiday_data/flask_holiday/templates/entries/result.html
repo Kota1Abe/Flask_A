@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for('add_entry')}}"method=post class=add-entry>
+    <div class="form-group">
+        <label for="form-group">処理結果</label>
+        <input type="text" class="form-control" id="InputTitle" name=title>
+    </div>
+</form>
+{% endblock %}
+
