@@ -1,27 +1,45 @@
 from flask import request, redirect, url_for, render_template, flash, session
-from myapp import app
+from myapp import app, db
 
 from functools import wraps
+
+from myapp.models.user import User
+from myapp.models.career import Career
+from myapp.models.product import Product
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
-
-
-"""
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        if request.form["username"] != app.config["USERNAME"]:
-            flash("ユーザー名が異なります", "danger")
-        elif request.form["password"] != app.config["PASSWORD"]:
-            flash("パスワードが異なります", "danger")
+        user = User.query.filter(User.name == request.form["username"], User.password == request.form["password"]).first()
+
+        if user == None:
+            flash("ユーザー名かパスワードが異なります", "danger")
+            return redirect(url_for("login"))
         else:
             flash("ログインしました", "info")
             session["logged_in"] = True
-            return redirect(url_for("show_entries"))
+            return redirect(url_for("index"))
     return render_template("login.html")
+
+@app.route("/signin", methods=["POST"])
+def signin():
+    user = User.query.filter(User.name == request.form["username"]).first()
+    if not user == None:
+        flash("既に同名のユーザーが存在します", "danger")
+        return redirect(url_for("login"))
+
+    user = User(
+        name = request.form["username"],
+        password = request.form["password"]
+    )
+    db.session.add(user)
+    db.session.commit()
+    session["logged_in"] = True
+    return redirect(url_for("index"))
 
 @app.route("/logout")
 def logout():
@@ -36,4 +54,3 @@ def login_required(view):
             return redirect(url_for("login"))
         return view(*args, **kwargs)
     return inner
-"""
