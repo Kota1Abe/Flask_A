@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<br>
+
 <table class="table">
     <thead>
       <tr class="table-primary">
@@ -9,14 +11,12 @@
       </tr>
     </thead>
     <tbody>
+      {% for holiday in holiday_list %}
       <tr>
-        <td>2001-03-23</td>
-        <td>みかみの誕生日</td>
+        <td>{{holiday.holi_date}}</td>
+        <td>{{holiday.holi_text}}</td>
       </tr>
-      <tr>
-        <td>2001-03-23</td>
-        <td>みかみの誕生日</td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
 
