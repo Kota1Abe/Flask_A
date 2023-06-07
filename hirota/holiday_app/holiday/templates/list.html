@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+<ul class="list-group list-group-flush">
+<label for="InputText">処理結果</label>
+
+<table class="table">
+    <thead>
+    <tr class="table-primary">
+        <th scope="col">祝日</th>
+        <th scope="col">テキスト</th>
+    </tr>
+    </thead>
+    {% for entry in entries %}
+    <tbody>
+        <tr>
+            <td>{{ entry.holi_date }}</td>
+            <td>{{ entry.holi_text }}</td>
+        </tr>
+        {% else %}
+        投稿がありません
+        {% endfor %}
+        </ul>
+    </tbody>
+</table>
+
+<form action="{{ url_for('input_entry')}}" class=show-entries>
+    <button type="submit" class="btn btn-primary">戻る</button>
+</form>
+
+{% endblock %}

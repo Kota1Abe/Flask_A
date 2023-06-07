@@ -1,0 +1,17 @@
+.card {
+    margin: 0.25rem;
+}
+
+.blog-body {
+    padding: 1.25em;
+}
+
+* {
+    font-family: 'Mplus 1p';
+}
+
+.btn-result {
+    background: darkgray;
+    margin-top: 10px;
+    padding-top: 10px;
+}
