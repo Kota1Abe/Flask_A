@@ -1,0 +1,34 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th> 
+            <th scope="col">祝日</th>
+            <th scope="col">テキスト</th>
+          </tr>
+        </thead>
+        {% set i = 0 %}
+        {%for holi in range(message|length) %}
+        
+            <tbody>
+                
+                
+
+                <tr>
+                    <td>{{holi+1}}</td>
+                    <td>{{message[holi].holi_date}}</td>
+                    <td>{{message[holi].holi_text}}</td>
+                
+                </tr>
+        
+
+            </tbody>
+        {% endfor %}
+
+
+
+</div>
+
+
+{% endblock %}

@@ -52,8 +52,11 @@ from flask_blog import app
 @app.route('/')
 def show_entries():
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    return render_template('entries/index.html')
+        return redirect(url_for('login'))# 로그인 함수를 가르킴 
+    return render_template('entries/index.html') #render함수로 html가르킴
+# html 파일은 로그인이 되었을 때 표시 
+# render_template는 templates 폴더의 주소를 가준으로 html 파일을 불러옴 
+ 
 
 
 @app.route('/login', methods=['GET', 'POST'])
