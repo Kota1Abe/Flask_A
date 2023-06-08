@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<form action="{{url_for(add_w_career, id=id)}}" method="post">
+<form action="{{url_for('add_w_career', id=id)}}" method="post">
     <div class="form-group">
         <label>リンクを追加する</label>
         <input type="text" class="form-control" name="url">
