@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block body %}
+<h4>処理結果</h4>
+<p>{{print_str}}</p><br>
+<form action="{{url_for('input')}}" method=post>
+    <button type="submit" class="btn btn-primary" href="{{url_for('input')}}">戻る</button>  
+</form>
+{% endblock %}
