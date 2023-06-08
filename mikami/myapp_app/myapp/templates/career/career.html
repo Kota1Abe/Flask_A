@@ -1,35 +1,41 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<h2>{{user.name}}</h2>
-<p>{{user.text}}</p>
-<img src="{{user.imgsrc}}" alt="">
+<main>
+    <div class="sec1">
+        <img src="{{user.imgsrc}}" alt="">
+        <h2>{{user.name}}</h2>
+        <p>{{user.text}}</p>
+        <a href="{{url_for('update_user', id=user.id)}}" class="btn btn-outline-success" style="margin-right: 10px;">プロフィール編集</a>
+        <a href="{{url_for('add_career', id=user.id)}}" class="btn btn-outline-success" style="margin-right: 10px;">キャリアを追加する</a>
+        <a href="{{url_for('add_w_career', id=user.id)}}" class="btn btn-outline-primary">Wanteadlyから追加する</a>
+    </div>
 
-<br>
-<br>
+    <br>
+    <br>
+    <!--<a href="" class="btn btn-info">作品を追加する</a>-->
 
-<a href="{{url_for('update_user', id=user.id)}}" class="btn btn-info" style="margin-right: 10px;">プロフィール編集</a>
-<a href="{{url_for('add_career', id=user.id)}}" class="btn btn-info" style="margin-right: 10px;">キャリアを追加する</a>
-<a href="{{url_for('add_w_career', id=user.id)}}">Wanteadlyから追加する</a>
-<!--<a href="" class="btn btn-info">作品を追加する</a>-->
+    <br>
+    <br>
 
-<br>
-<br>
-
-<ul>
-    {% for value in user.career %}
-    <li>
-        <h3>name: {{value.name}}</h3>
-        <p>position: {{value.position}}</p>
-        <p>date: {{value.s_date}}</p>
-        <img src="{{value.imgsrc}}" alt="">
-        <br>
-        <a href="{{url_for('update_career', userid=user.id, careerid=value.id)}}" class="btn btn-primary">編集する</a>
-        <form method="post" action="{{url_for('delete_career', userid=user.id, careerid=value.id)}}">
-            <button type="submit" class="btn btn-danger">削除する</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
-
+    <ul>
+        {% for value in user.career %}
+        <div class="card">
+        <div class="card-body">
+        <li>
+            <small>{{value.s_date}}</small>
+            <h3>{{value.name}}</h3>
+            <p>{{value.position}}</p>
+            <img src="{{value.imgsrc}}" alt="">
+            <br>
+            <a href="{{url_for('update_career', userid=user.id, careerid=value.id)}}" class="btn btn-outline-primary">編集する</a>
+            <form method="post" action="{{url_for('delete_career', userid=user.id, careerid=value.id)}}">
+                <button type="submit" class="btn btn-outline-primary">削除する</button>
+            </form>
+        </li>
+        </div>
+        </div>
+        {% endfor %}
+    </ul>
+</main>
 {% endblock %}
