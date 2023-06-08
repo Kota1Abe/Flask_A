@@ -22,4 +22,4 @@ class Career(db.Model):
         self.created_at = datetime.utcnow()
 
     def __repr__(self):
-        return "<Entry user:{} password:{}>".format(self.id, self.title, self.text)
+        return "<Entry user: password:>".format("""self.id, self.title, self.text""")

@@ -7,4 +7,4 @@ app.config.from_object("myapp.config")
 
 db = SQLAlchemy(app)
 
-from myapp.views import views
+from myapp.views import career, views

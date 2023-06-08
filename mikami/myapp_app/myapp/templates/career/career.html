@@ -5,9 +5,31 @@
 <p>{{user.text}}</p>
 <img src="{{user.imgsrc}}" alt="">
 
-<a href="{{url_for('update_user', id=user.id)}}" class="btn btn-info" style="margin-right: 10px;">プロフィール編集</a>
-<a href="" class="btn btn-info" style="margin-right: 10px;">キャリアを追加する</a>
-<a href="" class="btn btn-info">作品を追加する</a>
+<br>
+<br>
 
+<a href="{{url_for('update_user', id=user.id)}}" class="btn btn-info" style="margin-right: 10px;">プロフィール編集</a>
+<a href="{{url_for('add_career', id=user.id)}}" class="btn btn-info" style="margin-right: 10px;">キャリアを追加する</a>
+<a href="{{url_for('add_career_w', id=user.id)}}">Wanteadlyから追加する</a>
+<!--<a href="" class="btn btn-info">作品を追加する</a>-->
+
+<br>
+<br>
+
+<ul>
+    {% for value in user.career %}
+    <li>
+        <h3>name: {{value.name}}</h3>
+        <p>position: {{value.position}}</p>
+        <p>date: {{value.s_date}}</p>
+        <img src="{{value.imgsrc}}" alt="">
+        <br>
+        <a href="{{url_for('update_career', userid=user.id, careerid=value.id)}}" class="btn btn-primary">編集する</a>
+        <form method="post" action="{{url_for('delete_career', userid=user.id, careerid=value.id)}}">
+            <button type="submit" class="btn btn-danger">削除する</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}

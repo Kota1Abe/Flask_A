@@ -75,3 +75,4 @@ def update_user(id):
         db.session.commit()
         return redirect(url_for("show_user", id=id))
     return render_template("update.html", user=user)
+    

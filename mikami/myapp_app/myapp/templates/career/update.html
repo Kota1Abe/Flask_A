@@ -1,26 +1,22 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<form action="" method="post">
+<form action="{{url_for('update_career', userid=career.user_id, careerid=career.id)}}" method="post">
     <div class="form-group">
         <label for="InputTitle">会社名</label>
-        <input type="text" class="form-control" id="InputTitle" name="name">
+        <input type="text" class="form-control" id="InputTitle" name="name" value="{{career.name if career.name else ''}}">
     </div>
     <div class="form-group">
         <label for="InputTitle">ポジション・担当</label>
-        <input type="text" class="form-control" id="InputTitle" name="position">
+        <input type="text" class="form-control" id="InputTitle" name="position" value="{{career.position if career.position else ''}}">
     </div>
     <div class="form-group">
         <label for="InputTitle">会社アイコン(画像リンクのみ有効)</label>
-        <input type="text" class="form-control" id="InputTitle" name="imgsrc">
+        <input type="text" class="form-control" id="InputTitle" name="imgsrc" value="{{career.imgsrc if career.imgsrc else ''}}">
     </div>
     <div class="form-group">
         <label for="InputTitle">開始年月 ※2023年1月の場合 2023-01</label>
-        <input type="text" class="form-control" id="InputTitle" name="s_date">
-    </div>
-    <div class="form-group">
-        <label for="InputTitle">概要</label>
-        <textarea class="form-control" id="InputTitle" name="text"></textarea>
+        <input type="text" class="form-control" id="InputTitle" name="s_date" value="{{career.s_date if career.s_date else ''}}">
     </div>
     <button type="submit" class="btn btn-primary">追加</button>
 </form>
