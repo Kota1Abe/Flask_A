@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-<form action ="/maintenance_date" method = post>
+<form action ="/maintenance_data" method = post>
     <div class ="form-group">
         <label for ="InputDate">祝日 日付 </label> 
         <input type ="date" class ="form-control" id =" InputDate" name = "holiday" > 
@@ -12,15 +12,18 @@
         </div >
 
     <div class="btn-group">
+        <!--
         <form action="" method="GET">
+        -->
             <button type="submit" class="btn btn-primary" name="button" value="insert_update">新規登録・更新
             </button>
-        </form>
+        <!--</form> -->
         
-        <form action="maintenance_date" method="POST">
+        <!--
+        <form action="" method="POST">-->
             <button type="submit" class="btn btn-danger" name="button" value="delete" style="margin-left:10px;">削除
             </button>
-        </form>
+        <!--</form> -->
     </div>
     
 </form>
