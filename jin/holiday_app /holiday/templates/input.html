@@ -1,0 +1,32 @@
+
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+    <form  method=post action="?">
+        <div class="form-group">
+            
+                <label for="InputTitle">DATE</label>
+                <input type="date" class="form-control" id="InputTitle" name=date_input> 
+            
+        
+
+
+        
+            
+                <label for="InputPassword">TEXT</label>
+                <input type="text" class="form-control" id="InputText" name=text_input>
+            
+       
+            <button type="submit" class="btn btn-primary" formaction="{{url_for('create')}}">新規登録・更新</button>
+       
+       
+            <button type="submit" class="btn btn-primary" style="margin-left: 10px;" formaction= "{{url_for('delete')}}">削除</button>
+       
+        <br><br>
+
+       
+            <button type="submit" class="btn btn-primary" formaction="{{url_for('result')}}">一覧出力</button>
+        </div>
+    </form> 
+    
+</div>
+    {% endblock %}
