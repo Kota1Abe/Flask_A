@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<form action="" method="post">
+    <div class="form-group">
+        <label for="InputTitle">会社名</label>
+        <input type="text" class="form-control" id="InputTitle" name="name">
+    </div>
+    <div class="form-group">
+        <label for="InputTitle">ポジション・担当</label>
+        <input type="text" class="form-control" id="InputTitle" name="position">
+    </div>
+    <div class="form-group">
+        <label for="InputTitle">会社アイコン(画像リンクのみ有効)</label>
+        <input type="text" class="form-control" id="InputTitle" name="imgsrc">
+    </div>
+    <div class="form-group">
+        <label for="InputTitle">開始年月 ※2023年1月の場合 2023-01</label>
+        <input type="text" class="form-control" id="InputTitle" name="s_date">
+    </div>
+    <div class="form-group">
+        <label for="InputTitle">概要</label>
+        <textarea class="form-control" id="InputTitle" name="text"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">追加</button>
+</form>
+
+{% endblock %}

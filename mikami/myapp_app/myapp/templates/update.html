@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<form action="" method="post">
+    <div class="form-group">
+        <label>ユーザー名</label>
+        <input type="text" class="form-control" name="name" value="{{user.name}}" disabled>
+    </div>
+    <div class="form-group">
+        <label>アイコン画像(画像リンクのみ有効)</label>
+        <input type="text" class="form-control" name="imgsrc" value="{{user.imgsrc if user.imgsrc else ''}}">
+    </div>
+    <div class="form-group">
+        <label>外部サイト</label>
+        <input type="text" class="form-control" name="url" value="{{user.url if user.url else ''}}">
+    </div>
+    <div class="form-group">
+        <label>概要</label>
+        <textarea class="form-control" name="text">{{user.text if user.text else ''}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">追加</button>
+</form>
+
+{% endblock %}
